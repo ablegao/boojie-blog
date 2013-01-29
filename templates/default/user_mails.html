@@ -1,0 +1,76 @@
+%def leftblock():
+
+<h2>第一步， 添加关联账户!</h2>
+%for token in platform:
+
+<p><img src="{{token['platform_small_face']}}" >{{token['platform_code']}} , {{token['platform_name']}} <a href="/mails/token_del?pid={{token['platform_id']}}&code={{token['platform_code']}}">删除</a> </p>
+%end
+
+%if len(platform) == 0 :
+<p><a href="/oauth/sina">添加Sina账户</a></p>
+%end
+
+
+<h2>第二步， 选择订阅的好友！</h2>
+<script>
+	var page 	= 0;
+	var users	= 0;
+	var params	= {
+		'page':0,
+		'count':9,
+	
+	}
+function set_mail(obj,type,uid,name,small,big){
+	data = {
+			'type':type,
+			'uid':uid,
+			'name':name,
+			'facesmall':small,
+			'facebig':big,
+		}
+		$.post("/mails/putuser" , data, function(data){
+			$("#box_item_"+uid).remove();	
+		});
+}
+function get_list(url,data){
+
+	$.get("/api/"+url,data , function(data){
+		params['page']	= data['page']
+		html 		= '';
+		users		= data['users'];
+		for( listnum in data['users']){
+			//alert(user);
+			user 	= data['users'][listnum];
+			html	+='<div id="box_item_'+user['id']+'" class="box_item"  >'
+				+'<img src="'+user['face_small']+'"><a href="'+user['page_url']+'">'+user['name']+'</a>'
+				+'  &nbsp;&nbsp;<a onclick="set_mail(this,\'sina\',\''+user['id']+'\',\''+user['name']+'\',\''+user['face_small']+'\',\''+user['face_big']+'\')" href="#" >订阅</a>'
+				+'</div>';
+		}
+		$("#userlist").html(html);
+	
+	} , 'json');
+
+}
+get_list('sina/my_follower' , params);
+</script>
+<p><a href="javascript:get_list('sina/my_follower' , params)">换一批 </a></p>
+<p id="userlist"></p>
+<h2>第三步， 确定邮件发送频率！</h2>
+<p>
+<select name="time_long">
+	<option value="1">每一小时一封邮件</option>
+</select></p><p>
+发邮件到<br/>
+<input type="text" value="{{mail}}" >
+</p>
+%end
+
+
+%def rightblock():
+<h2>功能</h2>
+%include user_mails_left
+
+%end
+
+
+%rebase base leftblock=leftblock,rightblock=rightblock,menu_id=menu_id

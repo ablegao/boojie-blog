@@ -1,0 +1,103 @@
+
+%def leftblock():
+<div class="content">
+	<div class="content-inner">
+		<div class="yearly-archive archive-page">
+			<form name="form1" method="POST" action="{{form_url}}">
+					标题:<input type="text" name="title" value="{{title or ''}}"><br>
+					分类:<input type="text" name="cate" value="{{cate or ''}}"><br>
+					标签:<input type="text" name="tags" value="{{tags or ''}}"><br>
+					内容：
+
+					<textarea name="content">{{content or ''}}</textarea>
+					<input type="submit" value="提交">
+				</form>
+				
+				
+				<a target="_banlk" href="https://gitcafe.com/riku/Markdown-Syntax-CN/blob/master/syntax.md#code">Markdown 语法速查</a>
+				<div class="markdown"><h1>Markdown 语法速记表</h1>
+
+<h2>1 标题与文字格式</h2>
+
+<h4>标题</h4>
+<div><pre># 这是 H1 &lt;一级标题&gt;
+## 这是 H2 &lt;二级标题&gt;
+###### 这是 H6 &lt;六级标题&gt;
+</pre>
+</div>
+
+<h4>文字格式</h4>
+<div><pre>**这是文字粗体格式**
+*这是文字斜体格式*
+~~在文字上添加删除线~~
+</pre>
+</div>
+
+<h2>2 列表</h2>
+
+<h4>无序列表</h4>
+<div><pre>* 项目1
+* 项目2
+* 项目3
+</pre>
+</div>
+
+<h4>有序列表</h4>
+<div><pre>1. 项目1
+2. 项目2
+3. 项目3
+   * 项目1
+   * 项目2
+</pre>
+</div>
+
+<h2>3 其它</h2>
+
+<h4>图片</h4>
+<div><pre>![图片名称](http://gitcafe.com/image.png)
+</pre>
+</div>
+
+<h4>链接</h4>
+<div><pre>[链接名称](http://gitcafe.com)
+</pre>
+</div>
+
+<h4>引用</h4>
+<div><pre>&gt; 第一行引用文字
+&gt; 第二行引用文字
+</pre>
+</div>
+
+<h4>水平线</h4>
+<div><pre>***
+</pre>
+</div>
+
+<h4>代码</h4>
+<div><pre>`&lt;hello world&gt;`
+</pre>
+</div>
+
+<hr>
+
+<p>关于 Markdown 的详细语法说明见<a href="http://gitcafe.com/riku/Markdown-Syntax-CN/blob/master/syntax.md#code">这里</a></p>
+</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+%end
+
+%def rightblock():
+
+
+
+
+%end
+
+%rebase base leftblock=leftblock,rightblock=rightblock,title='',menu=menu
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta name="author" content="Luka Cvrk (cssMoban.com.com)" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/static/default/css/main.css" type="text/css" media="screen, projection" />
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"  ></script>
+	<title>趴趴云订阅</title>
+</head>
+<body id="home">
+	<div class="wrap">
+		<div id="logo">
+			<h1><a href="." title="Home">趴趴云订阅</a></h1>
+			<p>为了避免你错过好戏， 我们帮你把数据整理出来！ </p>
+		</div>
+		<ul id="nav">
+%def menus(nums):	
+	%menus_conf	=(('Timeline','/timeline'), ('@Me',"/atme") , ("好友","/friends"),("私信","#"),("接收设置","/mails"))
+	%for ids in range(0,len(menus_conf)):
+		%menu = menus_conf[ids]
+	<li><a href="{{menu[1]}}" 
+		%if ids==nums:
+		class="current"
+		%end		
+		>{{menu[0]}}</a></li> 
+	%end		
+%end
+
+%menus(menu_id)
+</ul>
+	</div>
+	<div class="wrap">
+		<div id="left">
+			
+		<h2>关于我们</h2>	
+		<p>。。。。</p>
+		<h2>邀请代码登陆</h2>
+		<p>请填写你获取到的邀请代码！或者，<a href="/login">直接登陆!</a>
+		
+		<form method="GET" action=""><input name="code" type="text" value=""> <input type="submit" value="使用"></form>
+		{{ success}}
+		</p>
+		</div>	
+		<div id="footer">
+			<p> Copyright: Able Gao ,<a title="" href="http://ablegao.net">AbleGao.me</a></p>
+			<p>Design: Luka Cvrk, <a title="Awsome Web Templates" href="http://www.cssmoban.com/">cssMoban.com</a></p>
+		</div>		
+	</div>
+</body>
+</html>
+

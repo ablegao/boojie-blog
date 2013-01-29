@@ -1,0 +1,34 @@
+%def leftblock():
+	<div class="content single-post">
+		<div class="content-inner">
+
+
+<h2>用户注册</h2>	
+		<p>
+		<form method="POST" action="">
+		用户名称:<input type="text" name="username" value=""><br/>
+		密&nbsp;&nbsp;&nbsp;&nbsp;码:<input type="password" name="passwd" value=""><br/>
+		确认密码:<input type="password" name="comfirm_passwd" value=""><br/>
+		昵称:<input type="text" name="nickname" value=""><br/>
+		邮箱:<input type="text" name="mail" value=""><br/>
+		<input type="submit" value="提交" ></form>
+	</p>{{msg}}
+
+
+</div>
+</div>
+%end
+
+%def rightblock():
+
+
+
+
+
+
+%end
+
+
+%rebase base leftblock=leftblock,rightblock=rightblock,title='注册'
+
+

@@ -1,0 +1,27 @@
+
+%def leftblock():
+<div class="content">
+	<div class="content-inner">
+		<div class="yearly-archive archive-page">
+			<h2>内容分类</h2>	
+			%for row in rows:
+			<a href="/cate/{{row.title}}.html">{{row.title}}</a> &nbsp;
+			%end
+		</div>
+	</div>
+
+</div>
+
+
+
+%end
+
+%def rightblock():
+
+
+
+
+%end
+
+%rebase base leftblock=leftblock,rightblock=rightblock,title=''
+

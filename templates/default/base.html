@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="robots" content="all" />
+	　　<title> {{title}} Able Gao . me </title>
+	<meta name="google-site-verification" content="fbxdYvmKPM2eWQeOXwQ2K-t9ZPoEGjLTDCtP4LuMDWE" />
+<link rel="stylesheet" type="text/css" href="/static/default/css/style.css" />
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"  ></script>
+</head>
+<body>
+<div class="blog">
+	<div class="container group">
+		<div class="fauxcolumn"></div>
+	      <div class="primary">
+	       <header>
+	       <h1>
+		<img src="/static/face.jpg">
+		       </h1>
+		<nav>
+		  <ul>				
+
+		<li><a href="/">最近更新</a></li> 
+		%if 'menu' in locals():
+			%for menuconf  in menu:
+				
+			<li><a href="/cate/{{menuconf[1]}}.html">{{menuconf[0]}}</a></li> 
+			%end
+		%end
+		
+		</ul>
+		    
+		%rightblock()
+		
+	        <h2>标签</h2>
+		<span id="tags_lists"></span>	
+		<script>
+			$(document).ready(function(){
+				$.getJSON("/get_tags",{},function(data){
+					html ="";
+					for(tag in data){
+						html+="<a href='/tags/"+data[tag]+".html'>"+data[tag]+"</a> &nbsp;";
+					}
+					$("#tags_lists").html(html);
+				});
+			
+			});
+		</script>	
+		</nav>
+		   
+	        </header>
+		<div class="ads">
+	
+	          <div class="fusionads">
+	            <h2>其他连接</h2>
+
+	        
+	            <p><a href="http://weibo.com/ablegao" title="新浪微博">新浪微博 http://weibo.com/ablegao</a></p>
+	            <p><a href="https://twitter.com/ablegao" title="Twitter">Twitter http://twitter.com/ablegao</a></p>
+	            <p><a href="https://facebook.com/able.gao" title="FaceBook"> FaceBook https://facebook.com/able.gao</a></p>
+	          </div><!-- .fusionads -->
+
+	
+	        </div><!-- .ads -->
+
+	      </div><!-- .primary -->
+	
+		
+				%leftblock()
+		
+		</div>
+		</div>
+</div>
+</div>
+
+	<p class="copyright">&copy; 2013 Able Gao。 </p> 
+
+　　
+
+</body>
+

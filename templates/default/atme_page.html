@@ -1,0 +1,58 @@
+%def leftblock():
+
+<script>
+function set_mail(obj,type,uid,name,small,big){
+	$(obj).html("等待...");
+	data = {
+			'type':type,
+			'uid':uid,
+			'name':name,
+			'facesmall':small,
+			'facebig':big,
+		}
+		$.post("/mails/putuser" , data, function(data){
+		
+			$(obj).html("加入订阅完成!");
+		});
+	}
+</script>
+
+%if 'statuses' in globals():
+%for item in statuses:
+<p>
+<img src="{{item['user']['face_small']}}">
+{{item['user']['name']}}  ,<a  onclick="set_mail(this,'sina','{{item['user']['id']}}','{{item['user']['name']}}','{{item['user']['face_small']}}','{{item['user']['face_big']}}')">加入订阅</a> 
+<br/>
+{{!item['text']}}<br/>
+%if item['bmiddle_pic'] !=None:
+<a href="{{item['bmiddle_pic']}}" ><img src="{{item['bmiddle_pic']}}"  style="max-height:100px;"></a>
+%end
+
+
+</p>
+
+<p>
+%if item['retweeted_status']!=None:
+
+{{item['retweeted_status']['text']}}<br/>
+%pic=item['retweeted_status'].get('bmiddle_pic' ,None)
+%if pic!=None:
+<a href="{{item['bmiddle_pic']}}" ><img src="{{pic}}" style="max-height:100px;"></a>
+%end
+%end
+</p>
+<p>来源:{{!item['source']}} {{item['create_time']}}</p>
+
+%end
+%end
+%end
+
+%def rightblock():
+
+
+%end
+
+
+%rebase base leftblock=leftblock,rightblock=rightblock,title='aaa',menu_id=menu_id
+
+

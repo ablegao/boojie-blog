@@ -1,0 +1,33 @@
+%if 'statuses' in globals():
+
+<h2>Hi {{username}}! 欢迎使用趴趴云！</h2>
+
+%for item in statuses:
+
+<div style="border:1px solid #efefef;margin:10px;padding:5px;background:#eeffee;">
+<p>
+<img src="{{item['user']['face_small']}}">
+<a href="{{item['user']['page_url']}}">{{item['user']['name']}} </a>
+<br/>
+{{!item['text']}}
+%if item['bmiddle_pic'] !=None:
+<p><a href="{{item['bmiddle_pic']}}"><img src="{{item['bmiddle_pic']}}" style="height:100px;"></a></p>
+%end
+
+
+</p>
+
+<p>
+%if item['retweeted_status']!=None:
+
+{{item['retweeted_status']['text']}}
+%pic=item['retweeted_status'].get('bmiddle_pic' ,None)
+%if pic!=None:
+<p><a href="{{pic}}"><img src="{{pic}}" style="height:100px;"></a></p>
+%end
+%end
+</p>
+<p>来源:{{!item['source']}} {{item['create_time']}}</p>
+</div>
+%end
+%end

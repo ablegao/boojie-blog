@@ -1,0 +1,40 @@
+%def leftblock():
+<script>
+var page = 0;
+function get_list(url,data){
+	$.get("/api/"+url,data , function(data){
+
+		page = data['page'];
+		html = '';
+		for( listnum in data['users']){
+			//alert(user);
+			user = data['users'][listnum];
+			html+='<div class="box_item" ><img src="'+user['face_small']+'"><a href="'+user['page_url']+'">'+user['name']+'</a></div>';
+		}
+		$("#blog_list").append(html);
+	
+	} , 'json');
+
+}
+get_list('sina/{{ types }}' , {'page':page});
+</script>
+<p>
+<div id='blog_list'>
+</div>
+</p>
+<p><div id="loadbut" onclick="get_list('sina/{{ types }}' , {'page':page})">载入更多</div></p>
+%end
+
+%def rightblock():
+<h2>关系</h2>
+<ul>
+<li><a href="/friends">我关注的！</a></li>
+<li><a href="/friends/bilateral">互相关注的！ </a></li>
+<li><a href="/friends/followers">关注我的！ </a></li>
+</ul>
+%end
+
+
+%rebase base leftblock=leftblock,rightblock=rightblock,title='aaa',menu_id=menu_id
+
+

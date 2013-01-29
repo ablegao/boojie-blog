@@ -1,0 +1,29 @@
+%def leftblock():
+	<div class="content single-post">
+		<div class="content-inner">
+
+
+<form method="post" action="">
+ username: <input type="text" value="" name="username" >
+ passwd: <input type="password" value="" name="passwd" >
+<input type="submit" value="登陆">
+
+{{ msg }}
+</form>
+</div>
+</div>
+
+%end
+
+%def rightblock():
+
+
+
+
+
+
+%end
+
+
+%rebase base leftblock=leftblock,rightblock=rightblock,title='登陆'
+

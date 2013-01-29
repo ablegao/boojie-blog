@@ -1,0 +1,34 @@
+
+%def leftblock():
+
+%from urllib import urlencode
+<div class="content">
+	<div class="content-inner">
+		<div class="yearly-archive archive-page">
+			%if login == True:
+				<h2><a href="/blog/add">发布</a></h2>	
+
+				%end
+
+			<h2>{{page_title}}</h2>
+			%for blog in blog_list:
+			<p><a href="/{{blog.cate}}/{{blog.create_time.strftime("%Y/%m/%d")}}/{{blog.title}}.html">{{blog.title}}</a><span class="date">{{blog.edit_time.strftime("%Y年%m月%d日%H:%M")}}</span></p>
+			
+			%end
+		</div>
+	</div>
+
+</div>
+
+
+
+%end
+
+%def rightblock():
+
+
+
+
+%end
+
+%rebase base leftblock=leftblock,rightblock=rightblock,title=page_title , menu=menu

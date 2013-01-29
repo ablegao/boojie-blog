@@ -1,0 +1,23 @@
+---
+layout: base
+---
+
+<div class="content single-post">
+	<div class="content-inner">
+		<h1>{{page.title}}</h1>
+		<span class="post-date">{{page.y}}年{{page.m}}月 {{page.d}} 日</span>
+		{{ content }}
+		<p>
+		
+		
+		{% if paginator.previous_page %}
+		<a href="/{{paginator.previous_page}}" class="previous">Previous</a>
+  {% endif %}
+  <span class="page_number ">Page: {{paginator.page}} of {{paginator.total_pages}}</span>
+  {% if paginator.next_page %}
+    <a href="/{{paginator.next_page}}" class="next ">Next</a>
+    {% endif %}
+
+    </p>
+	</div>
+</div>

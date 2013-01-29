@@ -1,0 +1,31 @@
+
+%def leftblock():
+<div class="content single-post">
+	<div class="content-inner">
+	%if row is not None:
+	<h1>{{row.title}}</h1>
+	%if login:
+	<a href="/blog/add?bid={{row.key().id()}}">修改</a>
+	%end
+		<span class="post-date">{{row.edit_time.strftime("%Y年%m月%d日")}} cate:{{row.cate}}   tag:{{ " ".join(row.tags) }}</span>
+		<br>
+		{{!row.html_content}}
+		%end
+	
+	</div>
+</div>
+
+
+
+%end
+
+%def rightblock():
+
+
+
+
+%end
+
+%rebase base leftblock=leftblock,rightblock=rightblock,title=row.title , menu= menu
+
+

@@ -1,0 +1,33 @@
+%def leftblock():
+
+<h2>订阅用户</h2>
+<p>
+<script>
+	function del(types,uid){
+		$.post("/mails/users/del" , {'type':types,'fuid':uid},function(data){
+			if( data = uid){
+				$("#box_item_"+uid).remove();
+			}
+		});
+	}
+</script>
+%for row in rows:
+%(types,fuid,name,facesmall,facebig) = row
+<div class="box_item" id="box_item_{{row['friend_id']}}" ><img src="{{row['platform_small_face']}}"> {{row['platform_name']}} 
+	<a onclick="del('{{row['platform_code']}}','{{row['friend_id']}}');return false;" href="#">删除</a>
+</div>
+
+%end
+</p>
+%end
+
+
+%def rightblock():
+<h2>功能</h2>
+
+%include user_mails_left
+%end
+
+
+%rebase base leftblock=leftblock,rightblock=rightblock,menu_id=menu_id
+
