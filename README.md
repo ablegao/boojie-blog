@@ -20,4 +20,9 @@
 	* Markdown 2.2.1
 	* httplib2 
 
-	
+## 安装方法
+
+>> 修改app.yaml 
+>> application: 【你的gae ID 】
+>> gae sdk appcfg update boojie-blog 
+
