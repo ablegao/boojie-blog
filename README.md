@@ -13,7 +13,7 @@
 [http://ablegao.me](http://ablegao.me)
 
 ## 的线文档与问答
-[http://www.ablegao.me/cate/boojie-blog ](http://www.ablegao.me/cate/boojie-blog)
+[http://www.ablegao.me/cate/boojie-blog ](http://www.ablegao.me/cate/boojie-blog.html)
 
 ## 框架内置
 	* Bottle 0.11.1
