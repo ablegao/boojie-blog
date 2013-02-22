@@ -16,7 +16,7 @@
 # under the License.
 
 import sys,os
-sys.path.insert(0,"other.zip")
+sys.path.insert(0,os.path.join(os.path.dirname(__file__), 'other.zip'))
 """ 
 bottle 版 url 处理
 """
@@ -25,7 +25,7 @@ import bottle
 from bottle import view, route, request , default_app , mount ,run
 from bottle import debug
 bottle.FormsDict.getu = bottle.FormsDict.getunicode
-debug(True)
+#debug(True)
 import setting
 
 
@@ -42,6 +42,7 @@ bottle.install(plugin.user_login.Plugin())
 #import controller.User
 #import controller.api
 import controller.blog
+import controller.inst
 #import controller.mail
 
 

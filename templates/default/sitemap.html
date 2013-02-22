@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
+    %for blog in blog_list:
+    <url>
+        <loc>http://www.ablegao.me/{{blog.cate}}/{{blog.create_time.strftime("%Y/%m/%d")}}/{{blog.title}}.html</loc>
+        <lastmod>{{blog.edit_time.strftime("%Y-%m-%d")}}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    %end
+    %for blog in blog_list:
+    <url>
+        <loc>http://www.ablegao.me/l/{{blog.key().id()}}</loc>
+        <lastmod>{{blog.edit_time.strftime("%Y-%m-%d")}}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    %end
+</urlset>

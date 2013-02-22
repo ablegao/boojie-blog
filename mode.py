@@ -32,6 +32,17 @@ class ModelBlogs(db.Model):
 
     is_del          = db.BooleanProperty(default=False)
 
+class ModelBlogsReply(db.Model):
+    blogid          = db.IntegerProperty(required=True)
+    account         = db.UserProperty()
+    replayid        = db.IntegerProperty()
+    content         = db.TextProperty()
+    #new_hire_training_completed = db.BooleanProperty()
+    create_time     =   db.DateTimeProperty()
+    edit_time       =   db.DateTimeProperty()
+
+    is_del          = db.BooleanProperty(default=False)
+
 
 class ModelCategory(db.Model):
     title           = db.StringProperty(required=True)
@@ -43,6 +54,14 @@ class ModelTags(db.Model):
     is_del          = db.BooleanProperty(default=False)
 
 
+
+class ModelTokens(db.Model):
+    ptype            = db.StringProperty(required=True)
+    token           = db.StringProperty(required=True)
+    username       = db.StringProperty()
+    puid            = db.StringProperty()
+    full_name       = db.StringProperty()
+    profile_picture = db.StringProperty()
 
 class GlobalHtml(object):
     def get_ret(self):

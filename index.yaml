@@ -40,7 +40,6 @@ indexes:
   - name: edit_time
     direction: desc
 
-
 - kind: ModelBlogs
   properties:
   - name: is_del=

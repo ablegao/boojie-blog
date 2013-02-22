@@ -42,10 +42,28 @@ oauth2_sina = {
                 'oauth_url':'https://api.weibo.com/oauth2',
                 'api_url'   :'https://api.weibo.com/2',
                 'client_id':'',
-                'redirect_uri':'http://papa.weilaiu.com/oauth/sina/access_callback',
+                'redirect_uri':'http://www.ablegao.me/oauth/sina/access_callback',
                 'client_secret':'', 
+                }
+
+"""
+ instagram 授权
+"""
+oauth2_inst = {
+                'oauth_url':'https://api.weibo.com/oauth2',
+                'api_url'   :'https://api.weibo.com/2',
+                'client_id':'53a4c0c978984647a018880eb312b5fd',
+                'redirect_uri':'http://www.ablegao.me/oauth/inst/access_callback',
+                'client_secret':'18e28464f26540a78ac2d011f0c3755a',
+                'scope' :['basic']
                 }
 
 
 
-
+class inst_obj(object):
+    oauth_url           = oauth2_inst['oauth_url']
+    api_url             = oauth2_inst['api_url']
+    client_id           = oauth2_inst['client_id']
+    redirect_uri        = oauth2_inst['redirect_uri']
+    client_secret       = oauth2_inst['client_secret']
+    scope               = oauth2_inst['scope']

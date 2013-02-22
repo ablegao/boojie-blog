@@ -12,7 +12,7 @@
 
 			<h2>{{page_title}}</h2>
 			%for blog in blog_list:
-			<p><a href="/{{blog.cate}}/{{blog.create_time.strftime("%Y/%m/%d")}}/{{blog.title}}.html">{{blog.title}}</a><span class="date">{{blog.edit_time.strftime("%Y年%m月%d日%H:%M")}}</span></p>
+			<p><a href="http://www.ablegao.me/{{blog.cate}}/{{blog.create_time.strftime("%Y/%m/%d")}}/{{blog.title}}.html">{{blog.title}}</a><span class="date">{{blog.edit_time.strftime("%Y年%m月%d日%H:%M")}}</span></p>
 			
 			%end
 		</div>

@@ -15,7 +15,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from bottle import redirect  , request ,response
+from bottle import redirect  , request ,response,PluginError
 import setting
 import inspect
 from mode import users
@@ -86,7 +86,8 @@ class BottleUsersPlugin(object):
             if not isinstance(other, BottleUsersPlugin):
                 continue
             if other.keyword == self.keyword:
-                raise PluginError("Found another BottleUser plugin with conflicting settings (non-unique keyword).")
+                continue
+                #raise PluginError("Found another BottleUser plugin with conflicting settings (non-unique keyword).")
 
     def apply(self,callback, context ):
         args = inspect.getargspec(context['callback'])[0]

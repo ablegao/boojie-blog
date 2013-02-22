@@ -17,8 +17,16 @@
 	      <div class="primary">
 	       <header>
 	       <h1>
-		<img src="/static/face.jpg">
-		       </h1>
+	       
+		       %import mode
+		       %row = mode.db.Query(mode.ModelTokens).filter("ptype = ",'inst').get()
+		       %if row!=None:
+		       <img src="{{row.profile_picture}}">
+		       %else:
+
+		       <img src="http://www.ablegao.me/static/face.jpg">
+			%end
+	       </h1>
 		<nav>
 		  <ul>				
 
@@ -26,13 +34,15 @@
 		%if 'menu' in locals():
 			%for menuconf  in menu:
 				
-			<li><a href="/cate/{{menuconf[1]}}.html">{{menuconf[0]}}</a></li> 
+			<li><a href="http://www.ablegao.me/cate/{{menuconf[1]}}.html">{{menuconf[0]}}</a></li>
 			%end
 		%end
+		<li><p><a href="http://www.ablegao.me/pic/inst">图片消息</a></li>
 		
 		</ul>
 		    
 		%rightblock()
+
 		
 	        <h2>标签</h2>
 		<span id="tags_lists"></span>	
@@ -41,13 +51,14 @@
 				$.getJSON("/get_tags",{},function(data){
 					html ="";
 					for(tag in data){
-						html+="<a href='/tags/"+data[tag]+".html'>"+data[tag]+"</a> &nbsp;";
+						html+="<a href='http://www.ablegao.me/tags/"+data[tag]+".html'>"+data[tag]+"</a> &nbsp;";
 					}
 					$("#tags_lists").html(html);
 				});
 			
 			});
-		</script>	
+		</script>
+
 		</nav>
 		   
 	        </header>
@@ -77,7 +88,19 @@
 
 	<p class="copyright">&copy; 2013 Able Gao。 </p> 
 
-　　
+　　<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-38553285-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
 
 </body>
 

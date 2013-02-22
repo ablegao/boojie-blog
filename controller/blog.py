@@ -16,7 +16,7 @@
 # under the License.
 
 
-################# 一些简单web 展示###################################################
+################# 外部类库 ###################################################
 import bottle
 from bottle import view , route , redirect , request , response, HTTPError
 import json
@@ -31,6 +31,7 @@ def_content = GlobalHtml()
 @route("/" ,apply=[view("index")])
 @route("/cate/<cate>.html" ,apply=[view("index")])
 @route("/tags/<tags>.html" ,apply=[view("index")])
+@route("/sitemap.xml" , apply=[view("sitemap")])
 def blog_index(cate=None,tags=None,users=None):
     """
     主页
@@ -132,18 +133,25 @@ def blog_add(users=None , glob = None):
     return ret
 
 
-@route("/<catename>/<datey>/<datem>/<dated>/<blog_title>.html", apply=[view("blog_info")])
-def blog_info(catename,blog_title,datey=None , datem=None,dated=None,users=None, glob= None):
+@route("/l/<bid:int>", apply=[view("blog_info")])
+@route("/<catename>/<datey:int>/<datem:int>/<dated:int>/<blog_title>.html", apply=[view("blog_info")])
+def blog_info(catename=None,blog_title=None,datey=None , datem=None,dated=None,users=None, glob= None,bid=None):
     """
     x详细信息
     """
 
     ret                 = def_content.get_ret()
     ret['login']    = users.is_login_admin(redir=False)
-    query           = db.Query(ModelBlogs) 
-    query.filter("cate =", catename.decode("utf8")).filter("title =",blog_title.decode('utf8') )
-    #query.filter("title =",blog_title.decode("utf8"))
-    row = query.get()
+    
+    if bid != None:
+        row         = ModelBlogs.get_by_id(int(bid))
+    else:
+        query       = db.Query(ModelBlogs)
+        query.filter("cate =", catename.decode("utf8")).filter("title =",blog_title.decode('utf8') )
+        #query.filter("title =",blog_title.decode("utf8"))
+        row         = query.get()
+
+
     if row:
         import markdown
         row.html_content = markdown.markdown(row.content)
@@ -169,4 +177,4 @@ def blog_get_tags():
         tags.append(tag.title)
     import json
     return json.dumps(tags)
-    #ret['tags'] = 
+    #ret['tags'] =

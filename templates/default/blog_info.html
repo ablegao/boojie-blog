@@ -7,6 +7,7 @@
 	%if login:
 	<a href="/blog/add?bid={{row.key().id()}}">修改</a>
 	%end
+	<span class="post-date">短连接: <a href="http://ablegao.me/l/{{row.key().id()}}" >http://ablegao.me/l/{{row.key().id()}} </a></span>
 		<span class="post-date">{{row.edit_time.strftime("%Y年%m月%d日")}} cate:{{row.cate}}   tag:{{ " ".join(row.tags) }}</span>
 		<br>
 		{{!row.html_content}}

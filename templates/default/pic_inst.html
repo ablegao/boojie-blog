@@ -1,0 +1,40 @@
+
+%def leftblock():
+%import time
+%import json
+<div class="content">
+	<div class="content-inner">
+		<div class="yearly-archive archive-page">
+			<h2>Instagram ！</h2>
+		%if 'message' in globals():
+		{{!message}}
+		%end
+		%if 'recent_media' in globals():
+		%for media in recent_media:
+		<p><a target="_black" href="{{media.link}}"><img src="{{media.images['low_resolution'].url}}" /></a><br/>
+		<span class="date">{{media.created_time}}</span>
+		%if media.caption!=None:
+		{{media.caption.text}}
+		%end
+		</p>
+			%end
+
+			%end
+		</div>	
+		</div>
+</div>
+
+
+
+%end
+
+%def rightblock():
+
+
+
+
+%end
+
+%rebase base leftblock=leftblock,rightblock=rightblock,title='',menu=menu
+
+
